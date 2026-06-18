@@ -1,0 +1,14 @@
+[package]
+name = "apex-transport-udp"
+version = "0.1.0"
+edition = "2021"
+authors = ["APEX Middleware Authors"]
+description = "UDP unicast/multicast transport for APEX Middleware"
+license = "Apache-2.0"
+
+[dependencies]
+libc = { version = "0.2" }
+
+[lib]
+name = "apex_transport_udp"
+path = "src/lib.rs"
