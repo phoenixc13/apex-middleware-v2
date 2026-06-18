@@ -1,0 +1,21 @@
+[package]
+name = "apex-transport-shm"
+version = "0.1.0"
+edition = "2021"
+authors = ["APEX Middleware Authors"]
+description = "Zero-copy intra-host SHM transport for APEX Middleware"
+license = "Apache-2.0"
+
+[dependencies]
+# libc for POSIX shm_open / mmap / munmap / shm_unlink
+libc = { version = "0.2", optional = false }
+
+[dev-dependencies]
+# No additional dev deps; integration tests use std only.
+
+[features]
+default = []
+
+[lib]
+name = "apex_transport_shm"
+path = "src/lib.rs"
