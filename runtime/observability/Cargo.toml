@@ -1,0 +1,20 @@
+[package]
+name = "apex-observability"
+version = "0.1.0"
+edition = "2021"
+description = "Structured metrics layer for the APEX runtime"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/phoenixc13/apex-middleware-v2"
+
+[lib]
+name = "apex_observability"
+path = "src/lib.rs"
+
+[dependencies]
+# No external dependencies — stdlib only.
+
+[dev-dependencies]
+# Integration tests only.
+
+[features]
+default = []
