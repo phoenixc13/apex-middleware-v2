@@ -1,0 +1,14 @@
+[package]
+name = "apex-transport-tcp"
+version = "0.1.0"
+edition = "2021"
+authors = ["APEX Middleware Authors"]
+description = "Reliable ordered TCP transport for APEX Middleware edge-cloud bridging"
+license = "Apache-2.0"
+
+[dependencies]
+libc = { version = "0.2" }
+
+[lib]
+name = "apex_transport_tcp"
+path = "src/lib.rs"
