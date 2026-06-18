@@ -1,0 +1,78 @@
+# APEX Middleware — Cargo Workspace
+# Root workspace definition for the entire APEX runtime monorepo.
+
+[workspace]
+resolver = "2"
+members = [
+  "runtime/core",
+  "runtime/node",
+  "runtime/topic",
+  "runtime/publisher",
+  "runtime/subscriber",
+  "runtime/discovery",
+  "runtime/serializer",
+  "runtime/qos",
+  "runtime/transport-shm",
+  "runtime/transport-udp",
+  "runtime/transport-tcp",
+  "runtime/memory",
+  "runtime/health",
+  "runtime/observability",
+  "runtime/diagnostics",
+  "runtime/security",
+  "runtime/session",
+  "runtime/config",
+  "runtime/benchmark",
+  "runtime/fault-injection",
+  "runtime/shutdown",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["APEX Team"]
+license = "MIT"
+repository = "https://github.com/phoenixc13/apex-middleware-v2"
+description = "APEX — Distributed Robotics Middleware"
+
+[workspace.dependencies]
+# Async runtime — selected for predictable performance characteristics
+tokio = { version = "1", features = ["full"] }
+
+# Structured logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+
+# Serialization — used only in tests and tooling, not in hot path
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Configuration loading
+toml = "0.8"
+
+# Hashing for schema fingerprints
+xxhash-rust = { version = "0.8", features = ["xxh64"] }
+
+# Shared memory IPC
+memmap2 = "0.9"
+
+# UUID for fallback ID generation
+uuid = { version = "1", features = ["v4"] }
+
+# Metrics
+prometheus = { version = "0.13", features = ["process"] }
+
+[profile.dev]
+opt-level = 0
+debug = true
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[profile.bench]
+opt-level = 3
+debug = false
+lto = true
